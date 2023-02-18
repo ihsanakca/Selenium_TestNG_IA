@@ -28,7 +28,7 @@ public class CallWDF {
         password.sendKeys("12345678");
         loginBtn.click();
 
-
+        driver.quit();
 
 
     }
