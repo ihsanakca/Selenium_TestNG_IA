@@ -1,4 +1,4 @@
-package com.kraft.tests.day_1;
+package com.kraft.tests.day_01;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Point;

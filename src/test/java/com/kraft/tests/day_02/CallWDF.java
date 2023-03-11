@@ -1,12 +1,10 @@
-package com.kraft.tests.day_2;
+package com.kraft.tests.day_02;
 
 import com.kraft.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class CallWDF {
     public static void main(String[] args) {
