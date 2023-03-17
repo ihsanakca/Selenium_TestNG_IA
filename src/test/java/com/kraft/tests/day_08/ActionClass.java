@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class ActionClass {
     WebDriver driver;
     Actions actions;
-    Faker faker=new Faker();
+    Faker faker = new Faker();
 
     @BeforeMethod
     public void setUp() {
@@ -26,7 +26,7 @@ public class ActionClass {
 
     @AfterMethod
     public void tearDown() {
-      driver.quit();
+        driver.quit();
     }
 
     @Test
@@ -104,12 +104,12 @@ public class ActionClass {
         WebElement firstname = driver.findElement(By.id("input-firstname"));
 
         actions.click(firstname)
-                .sendKeys(faker.name().firstName()+Keys.TAB)
-                .sendKeys(faker.name().lastName()+Keys.TAB)
-                .sendKeys(faker.internet().emailAddress()+Keys.TAB)
-                .sendKeys(faker.phoneNumber().cellPhone()+Keys.TAB)
-                .sendKeys(faker.internet().password()+Keys.TAB)
-                .sendKeys(faker.internet().password()+Keys.TAB).perform();
+                .sendKeys(faker.name().firstName() + Keys.TAB)
+                .sendKeys(faker.name().lastName() + Keys.TAB)
+                .sendKeys(faker.internet().emailAddress() + Keys.TAB)
+                .sendKeys(faker.phoneNumber().cellPhone() + Keys.TAB)
+                .sendKeys(faker.internet().password() + Keys.TAB)
+                .sendKeys(faker.internet().password() + Keys.TAB).perform();
 
     }
 }
