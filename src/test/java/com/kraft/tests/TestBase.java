@@ -1,5 +1,9 @@
 package com.kraft.tests;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.kraft.utilities.BrowserUtils;
 import com.kraft.utilities.ConfigurationReader;
 import com.kraft.utilities.Driver;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,10 +11,10 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -18,6 +22,41 @@ public class TestBase {
     protected Actions actions;
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
+
+    protected ExtentReports report;
+
+    protected ExtentHtmlReporter htmlReporter;
+
+    protected ExtentTest extentLogger;
+
+    @BeforeTest
+    public void setUpTest(){
+        //classı çağıralım
+        report=new ExtentReports();
+
+        //raporun path (yol) oluşturalım
+        String projectpath=System.getProperty("user.dir");
+        String reportPath=projectpath+"/test-output/report.html";
+
+        //HTML raporumuzu path ile oluşturalım
+        htmlReporter=new ExtentHtmlReporter(reportPath);
+
+        //HTML raporumuzu report nesnesiyle ilişkilendirelim
+        report.attachReporter(htmlReporter);
+
+        //raporun başlığını düzenleyelim
+        htmlReporter.config().setReportName("Smoke Testi");
+
+        report.setSystemInfo("Enviroment","UAT");
+        report.setSystemInfo("Browser", ConfigurationReader.get("browser"));
+        report.setSystemInfo("OS",System.getProperty("os.name"));
+        report.setSystemInfo("Test Specialist","UmutIhsan");
+        report.setSystemInfo("PO","Ferid Uluçınar");
+    }
+    @AfterTest
+    public void tearDownTest(){
+        report.flush();
+    }
 
 
     @BeforeMethod
@@ -34,7 +73,18 @@ public class TestBase {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) throws IOException {
+        //Eğer test başarısız olursa
+        if (result.getStatus()==ITestResult.FAILURE){
+            //başarısız testin adını alalım
+            extentLogger.fail(result.getName());
+            //ekran görüntüsü (ss) alalım ve ekran görüntüsünün kayıt edileceği yeri belirleyelim..
+            String screenShotPath= BrowserUtils.getScreenshot(result.getName());
+            //ekran görüntüsünü rapora ekleyelim
+            extentLogger.addScreenCaptureFromPath(screenShotPath);
+            //hata logunu (exception logs) raporun içine koyalım
+            extentLogger.fail(result.getThrowable());
+        }
 
         Driver.closeDriver();
     }
