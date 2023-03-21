@@ -20,9 +20,9 @@ public class AddEducationPage extends BasePage{
               .sendKeys(schoolName+ Keys.TAB)
               .sendKeys(degree+ Keys.TAB)
               .sendKeys(study+ Keys.TAB)
-              .sendKeys(fromDate+ Keys.TAB)
+              .sendKeys(fromDate+ Keys.TAB+Keys.TAB)
               .sendKeys(toDate+ Keys.TAB)
-              .sendKeys(programDescription+ Keys.TAB+Keys.ENTER).perform();
+              .sendKeys(programDescription+ Keys.TAB+Keys.TAB).perform();
 
   }
 }

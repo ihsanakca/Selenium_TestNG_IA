@@ -41,10 +41,7 @@ public class EditProfile extends TestBase {
         extentLogger.info("adding new experience");
         addExperiencePage.addExperienceMtd();
 
-
         extentLogger.pass("PASSED");
-
-
     }
 
     @Test
@@ -55,7 +52,6 @@ public class EditProfile extends TestBase {
         dashboardPage=new DashboardPage();
         overviewPage=new OverviewPage();
         addEducationPage=new AddEducationPage();
-
 
         extentLogger.info("Navigate to "+ ConfigurationReader.get("url"));
         extentLogger.info("Enter site with valid credentials");
@@ -76,6 +72,5 @@ public class EditProfile extends TestBase {
         addEducationPage.addEducation("Kraft","Master","SDET","11122020","12122022","SDET Course");
 
         extentLogger.pass("PASSED");
-
     }
 }
