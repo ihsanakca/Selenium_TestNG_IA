@@ -1,0 +1,67 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!--all packages-->
+<!--
+<suite name="Automation Test Suite" verbose="1">
+    <test name="Smoke Test">
+        <packages>
+            <package name="com.kraft.tests.*"></package>
+        </packages>
+    </test>
+</suite>
+-->
+<!--more than one package-->
+<!--
+<suite name="Automation Test Suite" verbose="1">
+    <test name="Smoke Test">
+        <packages>
+            <package name="com.kraft.tests.day_08"></package>
+            <package name="com.kraft.tests.day_09"></package>
+        </packages>
+    </test>
+</suite>
+        -->
+<!--more than one class-->
+<!--
+<suite name="Automation Test Suite" verbose="1">
+    <test name="Smoke Test">
+        <classes>
+            <class name="com.kraft.tests.day_11.LoginTest"></class>
+            <class name="com.kraft.tests.day_08.StaleElement"></class>
+        </classes>
+
+    </test>
+</suite>
+-->
+
+<!--more than one method-->
+<!--
+<suite name="Automation Test Suite" verbose="1">
+<test name="Smoke Test">
+    <packages>
+        <package name="com.kraft.tests.day_11"></package>
+    </packages>
+    <classes>
+        <class name="com.kraft.tests.day_11.LoginTest">
+            <methods>
+                <include name="loginWithCredentials"/>
+                <include name="testAlerts"/>
+            </methods>
+        </class>
+        <class name="com.kraft.tests.day_08.StaleElement">
+            <methods>
+                <exclude name="implicitlyWait"></exclude>
+                <exclude name="staleElement2"></exclude>
+            </methods>
+        </class>
+    </classes>
+</test>
+</suite>
+-->
+<suite name="Automation Test Suite" verbose="1">
+    <test name="Smoke Test">
+        <packages>
+            <package name="com.kraft.tests.day_11"></package>
+            <package name="com.kraft.tests.day_13"></package>
+        </packages>
+    </test>
+</suite>

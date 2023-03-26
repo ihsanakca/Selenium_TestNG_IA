@@ -12,6 +12,10 @@ public class AddEducationPage extends BasePage{
     @FindBy(xpath = "//li//button[text()='Add Education']")
     public WebElement addEducationPageSubTitle;
 
+    @FindBy(xpath = "//div/button[text()='Add Education']")
+    public WebElement addEducationBtn;
+
+
   public void addEducation(String schoolName, String degree,String  study, String fromDate, String toDate,String programDescription){
 
       Actions actions=new Actions(Driver.get());
@@ -22,7 +26,7 @@ public class AddEducationPage extends BasePage{
               .sendKeys(study+ Keys.TAB)
               .sendKeys(fromDate+ Keys.TAB+Keys.TAB)
               .sendKeys(toDate+ Keys.TAB)
-              .sendKeys(programDescription+ Keys.TAB+Keys.TAB).perform();
+              .sendKeys(programDescription+ Keys.TAB+Keys.ENTER).perform();
 
   }
 }

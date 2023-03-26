@@ -23,23 +23,23 @@ public class TestBase {
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
 
-    protected ExtentReports report;
+    static protected ExtentReports report;
 
-    protected ExtentHtmlReporter htmlReporter;
+    static protected ExtentHtmlReporter htmlReporter;
 
-    protected ExtentTest extentLogger;
+    static protected ExtentTest extentLogger;
 
     @BeforeTest
-    public void setUpTest(){
+    public void setUpTest() {
         //classı çağıralım
-        report=new ExtentReports();
+        report = new ExtentReports();
 
         //raporun path (yol) oluşturalım
-        String projectpath=System.getProperty("user.dir");
-        String reportPath=projectpath+"/test-output/report.html";
+        String projectpath = System.getProperty("user.dir");
+        String reportPath = projectpath + "/test-output/report.html";
 
         //HTML raporumuzu path ile oluşturalım
-        htmlReporter=new ExtentHtmlReporter(reportPath);
+        htmlReporter = new ExtentHtmlReporter(reportPath);
 
         //HTML raporumuzu report nesnesiyle ilişkilendirelim
         report.attachReporter(htmlReporter);
@@ -47,14 +47,15 @@ public class TestBase {
         //raporun başlığını düzenleyelim
         htmlReporter.config().setReportName("Smoke Testi");
 
-        report.setSystemInfo("Enviroment","UAT");
+        report.setSystemInfo("Enviroment", "UAT");
         report.setSystemInfo("Browser", ConfigurationReader.get("browser"));
-        report.setSystemInfo("OS",System.getProperty("os.name"));
-        report.setSystemInfo("Test Specialist","UmutIhsan");
-        report.setSystemInfo("PO","Ferid Uluçınar");
+        report.setSystemInfo("OS", System.getProperty("os.name"));
+        report.setSystemInfo("Test Specialist", "UmutIhsan");
+        report.setSystemInfo("PO", "Ferid Uluçınar");
     }
+
     @AfterTest
-    public void tearDownTest(){
+    public void tearDownTest() {
         report.flush();
     }
 
@@ -75,11 +76,11 @@ public class TestBase {
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {
         //Eğer test başarısız olursa
-        if (result.getStatus()==ITestResult.FAILURE){
+        if (result.getStatus() == ITestResult.FAILURE) {
             //başarısız testin adını alalım
             extentLogger.fail(result.getName());
             //ekran görüntüsü (ss) alalım ve ekran görüntüsünün kayıt edileceği yeri belirleyelim..
-            String screenShotPath= BrowserUtils.getScreenshot(result.getName());
+            String screenShotPath = BrowserUtils.getScreenshot(result.getName());
             //ekran görüntüsünü rapora ekleyelim
             extentLogger.addScreenCaptureFromPath(screenShotPath);
             //hata logunu (exception logs) raporun içine koyalım
@@ -90,7 +91,7 @@ public class TestBase {
     }
 
     @AfterClass
-    public void tearDownClass(){
-       // Driver.closeDriver();
+    public void tearDownClass() {
+        // Driver.closeDriver();
     }
 }
