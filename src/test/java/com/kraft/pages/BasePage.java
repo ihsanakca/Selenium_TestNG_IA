@@ -17,6 +17,9 @@ public abstract class BasePage {
    @FindBy(css = "nav>ul>li")
    public List<WebElement> tabNames;
 
+    @FindBy(xpath = "//span[text()='Login']")
+    public WebElement loginBtn;
+
     public void navigateTabAndModule(String tabName, String moduleName){
         WebElement tab = Driver.get().findElement(By.xpath("//span[text()='"+tabName+"']"));
         tab.click();
@@ -27,5 +30,10 @@ public abstract class BasePage {
     public void navigateTab(String tabName){
         WebElement tab = Driver.get().findElement(By.xpath("//span[text()='"+tabName+"']"));
         tab.click();
+    }
+
+    public void logoutAndNavigateToLoginPage(String userName){
+        navigateTabAndModule(userName,"Sign Out");
+        loginBtn.click();
     }
 }

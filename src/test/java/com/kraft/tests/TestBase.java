@@ -25,9 +25,9 @@ public class TestBase {
 
     static protected ExtentReports report;
 
-    static protected ExtentHtmlReporter htmlReporter;
+    protected ExtentHtmlReporter htmlReporter;
 
-    static protected ExtentTest extentLogger;
+    protected ExtentTest extentLogger;
 
     @BeforeTest
     public void setUpTest() {
@@ -57,6 +57,7 @@ public class TestBase {
     @AfterTest
     public void tearDownTest() {
         report.flush();
+       // Driver.closeDriver();
     }
 
 
