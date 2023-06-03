@@ -29,9 +29,9 @@ public class OpenBrowser {
 //        System.out.println("driver.manage().window().getSize() = " + driver.manage().window().getSize());
 //        System.out.println("driver.manage().window().getPosition() = " + driver.manage().window().getPosition());
 
-       driver.manage().window().setPosition(new Point(-1000,0));
-//       // driver.manage().window().setSize(new Dimension(900,600));
-       driver.manage().window().maximize();
+//       driver.manage().window().setPosition(new Point(-1000,0));
+////       // driver.manage().window().setSize(new Dimension(900,600));
+//       driver.manage().window().maximize();
 
 
     }
