@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import org.testng.annotations.*;
 
 public class TestNG_First {
-    /*
+    /**
     1- Navigate to url:http://zero.webappsecurity.com/index.html
     2- click Signin
     2- Username=username, Password=password
@@ -42,10 +42,6 @@ public class TestNG_First {
         WebElement amount = driver.findElement(By.xpath("//input[@id='tf_amount']"));
         System.out.println("amount.getAttribute(\"required\") = " + amount.getAttribute("required"));
         System.out.println("amount.getAttribute(\"validationMessage\") = " + amount.getAttribute("validationMessage"));
-
-//        String validationMessage = (String) ((JavascriptExecutor) driver)
-//                .executeScript("return arguments[0].validity.validationMessage;", amount);
-//        System.out.println("validationMessage = " + validationMessage);
 
         Thread.sleep(2000);
         driver.quit();

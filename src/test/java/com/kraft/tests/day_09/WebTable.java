@@ -39,13 +39,15 @@ public class WebTable {
         int numberOfColumn=columnNames.size();
         int numberOfRow=rowsOfTable.size();
 
+        System.out.println(dataOfCell(3, 3));
+
         for (int i = 1; i <=numberOfRow; i++) {
             for (int j = 1; j <= numberOfColumn; j++) {
                 System.out.print(dataOfCell(i, j)+" ");
             }
             System.out.println();
         }
-        System.out.println(dataOfCell(3, 3));
+
     }
 
     String dataOfCell(int row,int column){

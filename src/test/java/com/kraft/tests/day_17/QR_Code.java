@@ -37,7 +37,7 @@ public class QR_Code {
 
         textArea.sendKeys(input);
 
-        BrowserUtils.waitFor(8);
+        BrowserUtils.waitFor(2);
 
         WebElement image=driver.findElement(By.id("qrcode-preview-image"));
         BrowserUtils.waitForVisibility(image,10);
@@ -58,8 +58,6 @@ public class QR_Code {
         System.out.println("text = " + text);
         driver.get(text);
 
-        LoginPage loginPage=new LoginPage();
-        loginPage.loginMtd();
 
         driver.close();
 

@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.kraft.utilities.WebDriverFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -35,6 +36,8 @@ public class ActionClass {
         WebElement clicker = driver.findElement(By.id("clicker"));
         actions.doubleClick(clicker).perform();
 
+        actions.moveToElement(clicker,5,5).click().build().perform();  //---> 5 sağa, 5 aşağıya
+
 
     }
 
@@ -54,6 +57,9 @@ public class ActionClass {
                 .sendKeys("aaaaa@ddd.com" + Keys.TAB)
                 .sendKeys("12345678" + Keys.TAB)
                 .sendKeys("No comment" + Keys.TAB + Keys.TAB + Keys.ENTER).perform();
+
+        String filledFormInfo= driver.findElement(By.tagName("pre")).getText();
+        Assert.assertTrue(filledFormInfo.contains("Ahmet Ay"));
 
     }
 
@@ -77,6 +83,11 @@ public class ActionClass {
 
         WebElement exampleColorInput = driver.findElement(By.id("exampleColorInput"));
         js.executeScript("arguments[0].setAttribute('value', '#FF0000')", exampleColorInput);
+        Thread.sleep(3000);
+
+        WebElement disableRadioBox = driver.findElement(By.id("gridRadios"));
+        js.executeScript("arguments[0].setAttribute('checked','true')", disableRadioBox);
+        Thread.sleep(3000);
 
         WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
         Thread.sleep(3000);

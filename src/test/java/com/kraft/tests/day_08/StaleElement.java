@@ -65,13 +65,12 @@ public class StaleElement {
 
         js.executeScript("window.scrollBy(0,500)");
 
-        WebElement laptop = driver.findElement(By.xpath("//h3[text()=' Abra A5 V17.2.3 Intel Core i5-11400H 16GB " +
-                "RAM 500GB SSD 4GB RTX3050Ti FreeDOS 15.6\" FHD 144Hz Oyun Bilgisayarı']"));
+        WebElement laptop = driver.findElement(By.xpath("//h3[text()=' Ideapad Gaming 3 Intel Core i5 11320H 16GB 512GB SSD RTX3050 Freedos 15.6\" FHD Taşınabilir Bilgisayar 82K101HYTX']"));
 
         Actions actions=new Actions(driver);
         actions.moveToElement(laptop).perform();
 
-        WebElement sepeteEkle = driver.findElement(By.xpath("(//button[@kind='primary'])[2]"));
+        WebElement sepeteEkle = driver.findElement(By.xpath("//button[@data-test-id='product-info-button']"));
         sepeteEkle.click();
 
     }
